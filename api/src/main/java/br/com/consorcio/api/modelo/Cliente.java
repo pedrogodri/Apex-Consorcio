@@ -31,7 +31,7 @@ public class Cliente {
     private int idade;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endercos_id")
-    private Enderecos endereco;
+    private Endereco endereco;
     private Long telefone;
 
     // @OneToMany(mappedBy="cliente")
