@@ -2,11 +2,14 @@ package br.com.consorcio.api.modelo;
 
 import java.util.ArrayList;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +29,9 @@ public class Cliente {
     private String senha;
     private String cpf;
     private int idade;
-    private Endereco endereco;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endercos_id")
+    private Enderecos endereco;
     private Long telefone;
 
     // @OneToMany(mappedBy="cliente")
