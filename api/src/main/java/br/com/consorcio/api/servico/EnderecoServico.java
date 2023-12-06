@@ -9,6 +9,7 @@ import br.com.consorcio.api.modelo.Endereco;
 import br.com.consorcio.api.modelo.Mensagem;
 import br.com.consorcio.api.repositorio.EnderecoRepositorio;
 
+
 @Service
 public class EnderecoServico {
     
@@ -20,39 +21,37 @@ public class EnderecoServico {
 
     public ResponseEntity<?> cadastrarEndereco(Endereco endereco) {
 
-        Integer a = null; // Correção: Use Integer em vez de int para permitir nulos
-
-        if (endereco.getBairro() == null || endereco.getBairro().isEmpty()) {
+        if(endereco.getBairro().isEmpty() || endereco.getBairro() == null) {
             mensagem.setMensagem("Insira um bairro");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
-
-        if (endereco.getCidade() == null || endereco.getCidade().isEmpty()) {
+        
+        if(endereco.getCidade().isEmpty() || endereco.getCidade() == null) {
             mensagem.setMensagem("Insira uma Cidade");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
-
-        if (endereco.getEstado() == null || endereco.getEstado().isEmpty()) {
+        
+        if(endereco.getEstado().isEmpty() || endereco.getEstado() == null) {
             mensagem.setMensagem("Insira um Estado");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
-
-        if (endereco.getRua() == null || endereco.getRua().isEmpty()) {
+        
+        if(endereco.getRua().isEmpty() || endereco.getRua() == null) {
             mensagem.setMensagem("Insira uma Rua");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
-
-        if (endereco.getComplemento() == null || endereco.getComplemento().isEmpty()) {
-            mensagem.setMensagem("Insira um Complemento");
+        
+        if(endereco.getComplemento().isEmpty() || endereco.getComplemento() == null) {
+            mensagem.setMensagem("Insira um Compemento");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
-
-        if (endereco.getCep() == null) {
+        
+        if(endereco.getCep() == null ) {
             mensagem.setMensagem("Insira um Cep");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
 
-        enderecoRepositorio.save(endereco);
-        return new ResponseEntity<>(endereco, HttpStatus.CREATED);
+enderecoRepositorio.save(endereco);
+return new ResponseEntity<>(endereco, HttpStatus.CREATED);
     }
 }
