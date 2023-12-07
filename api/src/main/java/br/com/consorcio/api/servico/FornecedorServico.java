@@ -55,25 +55,14 @@ public class FornecedorServico {
     return fornecedorRepositorio.findAll();
 
   }
-<<<<<<< Updated upstream
- 
-  // public ResponseEntity<?> alterarFornecedor(Fornecedor fornecedor) {
-   //  if (fornecedor.getId() == null) {
-  //     mensagem.setMensagem("Id do Fornecedor não foi informado");
-  //   }
-  //   if (fornecedorRepositorio.existsById(fornecedor.getId())) {
-  //     Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(fornecedor.getId());
- //  }
-    
- //}
-=======
+
   
   public ResponseEntity<?> alterarFornecedor(Fornecedor fornecedor) {
     if (fornecedor.getId() == null) {
       mensagem.setMensagem("Id do Fornecedor não foi informado");
     }
     if (fornecedorRepositorio.existsById(fornecedor.getId())) {
->>>>>>> Stashed changes
+
 
       Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(fornecedor.getId());
 
