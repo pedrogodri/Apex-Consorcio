@@ -56,15 +56,15 @@ public class FornecedorServico {
 
   }
  
-//   public ResponseEntity<?> alterarFornecedor(Fornecedor fornecedor) {
-//     if (fornecedor.getId() == null) {
-//       mensagem.setMensagem("Id do Fornecedor não foi informado");
-//     }
-//     if (fornecedorRepositorio.existsById(fornecedor.getId())) {
-//       Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(fornecedor.getId());
-//   }
+  // public ResponseEntity<?> alterarFornecedor(Fornecedor fornecedor) {
+   //  if (fornecedor.getId() == null) {
+  //     mensagem.setMensagem("Id do Fornecedor não foi informado");
+  //   }
+  //   if (fornecedorRepositorio.existsById(fornecedor.getId())) {
+  //     Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(fornecedor.getId());
+ //  }
     
-// }
+ //}
 
 
   

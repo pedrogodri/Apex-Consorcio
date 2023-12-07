@@ -24,7 +24,7 @@ public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long id;
+    private Long id;
    // private byte img;
     private String nome;
     private String cor;
@@ -32,8 +32,8 @@ public class Veiculo {
     private Double kmRodado;
     private Fornecedor fornecedor;
     private Double preco;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_cliente")
+    //@ManyToOne(cascade = CascadeType.ALL)
+   // @JoinColumn(name = "id_cliente")
     private String descricao;
 
 
