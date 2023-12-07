@@ -1,14 +1,9 @@
 package br.com.consorcio.api.modelo;
 
-import java.sql.Date;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,8 +27,13 @@ public class Veiculo {
     private Double kmRodado;
     private Fornecedor fornecedor;
     private Double preco;
+<<<<<<< Updated upstream
     //@ManyToOne(cascade = CascadeType.ALL)
    // @JoinColumn(name = "id_cliente")
+=======
+    // @ManyToOne(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "id_cliente")
+>>>>>>> Stashed changes
     private String descricao;
 
 
