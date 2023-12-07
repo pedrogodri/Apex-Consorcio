@@ -27,13 +27,8 @@ public class Veiculo {
     private Double kmRodado;
     private Fornecedor fornecedor;
     private Double preco;
-<<<<<<< Updated upstream
-    //@ManyToOne(cascade = CascadeType.ALL)
-   // @JoinColumn(name = "id_cliente")
-=======
     // @ManyToOne(cascade = CascadeType.ALL)
     // @JoinColumn(name = "id_cliente")
->>>>>>> Stashed changes
     private String descricao;
 
 
