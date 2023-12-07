@@ -55,6 +55,7 @@ public class FornecedorServico {
     return fornecedorRepositorio.findAll();
 
   }
+<<<<<<< Updated upstream
  
   // public ResponseEntity<?> alterarFornecedor(Fornecedor fornecedor) {
    //  if (fornecedor.getId() == null) {
@@ -65,7 +66,30 @@ public class FornecedorServico {
  //  }
     
  //}
-
-
+=======
   
+  public ResponseEntity<?> alterarFornecedor(Fornecedor fornecedor) {
+    if (fornecedor.getId() == null) {
+      mensagem.setMensagem("Id do Fornecedor não foi informado");
+    }
+    if (fornecedorRepositorio.existsById(fornecedor.getId())) {
+>>>>>>> Stashed changes
+
+      Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(fornecedor.getId());
+
+      fornecedorExistente.setNome(fornecedor.getNome());
+      fornecedorExistente.setCnpj(fornecedor.getCnpj());
+      fornecedorExistente.setTelefone(fornecedor.getTelefone());
+      fornecedorExistente.setEmail(fornecedor.getEmail());
+
+      fornecedorRepositorio.save(fornecedorExistente);
+      return new ResponseEntity<>(fornecedorExistente, HttpStatus.CREATED);
+    } else {
+      mensagem.setMensagem("Fornecedor não encontrado");
+      return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+      }
+  }
+    
 }
+
+
