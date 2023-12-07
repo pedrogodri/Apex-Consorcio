@@ -1,7 +1,5 @@
 package br.com.consorcio.api.modelo;
 
-import java.util.ArrayList;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,10 +28,10 @@ public class Cliente {
     private String cpf;
     private int idade;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "endercos_id")
+    @JoinColumn(name = "endereco")
     private Endereco endereco;
     private Long telefone;
 
     // @OneToMany(mappedBy="cliente")
-    // private ArrayList<Veiculo> veiculos;
+    // private List<Veiculo> veiculos;
 }
