@@ -1,5 +1,7 @@
 package br.com.consorcio.api.servico;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,7 @@ public class ClienteServico {
     private Mensagem mensagem;
 
     @Autowired
-    private ClienteRepositorio clienteRepository;
+    private ClienteRepositorio clienteRepositorio;
 
     public ResponseEntity<?> cadastrarCliente(Cliente cliente) {
         
@@ -60,7 +62,20 @@ public class ClienteServico {
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
         //sucesso
-        clienteRepository.save(cliente);
+        clienteRepositorio.save(cliente);
         return new ResponseEntity<>(cliente, HttpStatus.CREATED);
     }
+
+    public List<Cliente> listarClientes(){
+        return clienteRepositorio.findAll();
+    }
+
+    // public ResponseEntity<?> alterarCliente(Cliente cliente) {
+    //     if(cliente.getId() == null) {
+    //         mensagem.setMensagem("Id do cliente não foi informado.");
+    //     }
+    //     if(clienteRepositorio.existsById(cliente.getId())) {
+    //         Cliente clienteExistente = clienteRepositorio.findByClienteId(cliente.getId());
+    //     }
+    // }
 }
