@@ -43,7 +43,7 @@ public class VeiculoServico {
       return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
     }
     if(veiculoRepositorio.existsById(veiculo.getId())) {
-      Veiculo veiculoExistente = veiculoRepositorio.findByVeicuoId(veiculo.getId());
+      Veiculo veiculoExistente = veiculoRepositorio.findByVeiculoId(veiculo.getId());
       veiculoExistente.setAno(veiculo.getAno());
       // Atualize as outras propriedades conforme necessário...
 

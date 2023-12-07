@@ -12,8 +12,6 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "veiculo")
-
-
 public class Veiculo {
     
     @Id
@@ -25,7 +23,7 @@ public class Veiculo {
     private String cor;
     private Integer ano;
     private Double kmRodado;
-    private Fornecedor fornecedor;
+    //private Fornecedor fornecedor;
     private Double preco;
     // @ManyToOne(cascade = CascadeType.ALL)
     // @JoinColumn(name = "id_cliente")

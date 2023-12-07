@@ -14,6 +14,6 @@ import java.util.List;
 public interface VeiculoRepositorio extends JpaRepository<Veiculo, Long> {
 
 
-    @Query("SELECT Veiculo FROM veiculo veiculo where veiculo.id = :id")
-  Veiculo findByVeicuoId(long id);
+    @Query("SELECT veiculo FROM Veiculo veiculo where veiculo.id = :id")
+    Veiculo findByVeiculoId(long id);
 }
