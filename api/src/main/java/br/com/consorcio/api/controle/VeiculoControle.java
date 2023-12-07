@@ -7,39 +7,41 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.consorcio.api.modelo.Fornecedor;
-import br.com.consorcio.api.servico.FornecedorServico;
+import br.com.consorcio.api.modelo.Veiculo;
+import br.com.consorcio.api.servico.VeiculoServico;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/fornecedor")
-public class FornecedorControle {
+public class VeiculoControle {
   
 @Autowired
-private FornecedorServico fornecedorServico;
+private VeiculoServico veiculoServico;
 
 //Cadastrar
 @PostMapping()
-public ResponseEntity<?> cadastrarFornecedor(@RequestBody Fornecedor fornecedor) {
-  return fornecedorServico.cadastrarFornecedor(fornecedor);
+public ResponseEntity<?> cadastrarVeiculo(@RequestBody Veiculo veiculo) {
+  return veiculoServico.cadastrarVeiculo(veiculo);
 }
 
 @GetMapping()
-public List<Fornecedor> listarFornecedor() {
-  return fornecedorServico.listarfornecedor();
+public List<Veiculo> listarFornecedor() {
+  return veiculoServico.listarVeiculo();
 }
-
-//Editar
+// ediatar
 @PutMapping()
-public ResponseEntity<?> alterarFornecedor(@RequestBody Fornecedor fornecedor) {
-  return fornecedorServico.alterarFornecedor(fornecedor);
+public ResponseEntity<?> alterarVeiculo(@RequestBody Veiculo veiculo) {
+    //TODO: process PUT request
+    
+    return veiculoServico.alterarVeiculo(veiculo);
 }
-
 }
 
 

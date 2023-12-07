@@ -1,7 +1,5 @@
 package br.com.consorcio.api.modelo;
 
-import java.util.ArrayList;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,5 +33,5 @@ public class Cliente {
     private Long telefone;
 
     // @OneToMany(mappedBy="cliente")
-    // private ArrayList<Veiculo> veiculos;
+    // private List<Veiculo> veiculos;
 }
