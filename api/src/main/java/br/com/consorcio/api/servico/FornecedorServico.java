@@ -1,5 +1,7 @@
 package br.com.consorcio.api.servico;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,5 +51,21 @@ public class FornecedorServico {
 
   }
   
+  public List<Fornecedor> listarfornecedor() {
+    return fornecedorRepositorio.findAll();
+
+  }
+ 
+//   public ResponseEntity<?> alterarFornecedor(Fornecedor fornecedor) {
+//     if (fornecedor.getId() == null) {
+//       mensagem.setMensagem("Id do Fornecedor não foi informado");
+//     }
+//     if (fornecedorRepositorio.existsById(fornecedor.getId())) {
+//       Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(fornecedor.getId());
+//   }
+    
+// }
+
+
   
 }
