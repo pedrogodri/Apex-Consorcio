@@ -37,7 +37,7 @@ public class VeiculoServico {
     return veiculoRepositorio.findAll();
   }
 
-  public ResponseEntity<?> alterarVeiculo(Veiculo veiculo) {
+ /*  public ResponseEntity<?> alterarVeiculo(Veiculo veiculo) {
     if (veiculo.getId() == null ) {
       mensagem.setMensagem("ID do veículo não foi informado");
       return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
@@ -53,5 +53,5 @@ public class VeiculoServico {
       mensagem.setMensagem("Veículo não encontrado!");
       return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
     }
-  }
+  } */
 }
