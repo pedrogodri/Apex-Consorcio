@@ -28,7 +28,7 @@ public class Cliente {
     private String cpf;
     private int idade;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "endereco")
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
     private Long telefone;
 

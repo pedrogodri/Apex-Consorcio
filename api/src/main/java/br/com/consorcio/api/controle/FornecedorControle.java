@@ -15,32 +15,26 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.consorcio.api.modelo.Fornecedor;
 import br.com.consorcio.api.servico.FornecedorServico;
 
-@CrossOrigin(origins = "*")
 @RestController
+@CrossOrigin
 @RequestMapping("/fornecedor")
 public class FornecedorControle {
-  
-@Autowired
-private FornecedorServico fornecedorServico;
+    
+    @Autowired
+    private FornecedorServico fornecedorServico;
 
-//Cadastrar
-@PostMapping()
-public ResponseEntity<?> cadastrarFornecedor(@RequestBody Fornecedor fornecedor) {
-  return fornecedorServico.cadastrarFornecedor(fornecedor);
+    @GetMapping()
+    public List<Fornecedor> listarFornecedores() {
+        return fornecedorServico.listarFornecedor(); 
+    }
+
+    @PostMapping()
+    public ResponseEntity<?> cadastrarFornecedor(@RequestBody Fornecedor fornecedor) {
+        return fornecedorServico.cadastrarFornecedor(fornecedor);
+    }
+
+    @PutMapping()
+    public ResponseEntity<?> alterarFornecedor(@RequestBody Fornecedor fornecedor) {
+        return fornecedorServico.alterarFornecedor(fornecedor);
+    }
 }
-
-@GetMapping()
-public List<Fornecedor> listarFornecedor() {
-  return fornecedorServico.listarfornecedor();
-}
-
-//Editar
-@PutMapping()
-public ResponseEntity<?> alterarFornecedor(@RequestBody Fornecedor fornecedor) {
-  return fornecedorServico.alterarFornecedor(fornecedor);
-}
-
-}
-
-
-
