@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,11 +16,13 @@ import br.com.consorcio.api.modelo.Veiculo;
 import br.com.consorcio.api.servico.VeiculoServico;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/fornecedor")
+@RequestMapping("/veiculo")
 public class VeiculoControle {
   
 @Autowired
@@ -35,12 +38,24 @@ public ResponseEntity<?> cadastrarVeiculo(@RequestBody Veiculo veiculo) {
 public List<Veiculo> listarFornecedor() {
   return veiculoServico.listarVeiculo();
 }
+
+
+@GetMapping("/{id}")
+public ResponseEntity<?> selecionarVeiculoId(@PathVariable Long id) {
+return VeiculoServico.selecionarVeiculoId(id);
+}
+
 // ediatar
 @PutMapping()
 public ResponseEntity<?> alterarVeiculo(@RequestBody Veiculo veiculo) {
     //TODO: process PUT request
     
     return veiculoServico.alterarVeiculo(veiculo);
+}
+
+@DeleteMapping("/{id}")
+public ResponseEntity<?> deletarVeiculo(@PathVariable Long id) {
+return VeiculoServico.deletarVeiculo(id);
 }
 }
 

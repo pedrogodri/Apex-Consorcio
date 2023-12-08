@@ -12,60 +12,74 @@ import br.com.consorcio.api.modelo.Mensagem;
 import br.com.consorcio.api.repositorio.FornecedorRepositorio;
 
 @Service
-
 public class FornecedorServico {
-
-  @Autowired
-  private Mensagem mensagem;
-
-  @Autowired
-  private FornecedorRepositorio fornecedorRepositorio;
-
-  public ResponseEntity<?> cadastrarFornecedor(Fornecedor fornecedor) {
     
-    if (fornecedor.getNome().isEmpty() || fornecedor.getNome() == null) {
-      mensagem.setMensagem("Insira um nome");
-      return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-    }
-    
-    if (fornecedor.getCnpj().isEmpty() || fornecedor.getNome() == null) {
-      mensagem.setMensagem("Insira um cnpj");
-      return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+    @Autowired
+    private Mensagem mensagem;
+
+    @Autowired
+    private FornecedorRepositorio fornecedorRepositorio;
+
+    //cadastrar
+    public ResponseEntity<?> cadastrarFornecedor(Fornecedor fornecedor) {
+        //sucesso
+        fornecedorRepositorio.save(fornecedor);
+        return new ResponseEntity<>(fornecedor, HttpStatus.CREATED);
     }
 
-    if (fornecedor.getEmail().isEmpty() || fornecedor.getNome() == null) {
-      mensagem.setMensagem("Insira um Email");
-      return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+    //listar
+    public List<Fornecedor> listarFornecedor(){
+        return fornecedorRepositorio.findAll();
+    }
+
+    //alterar
+    public ResponseEntity<?> alterarFornecedor(Fornecedor fornecedor) {
+        if(fornecedor.getId() == null) {
+            mensagem.setMensagem("Id do fornecedor não foi informado.");
+        }
+        if(fornecedorRepositorio.existsById(fornecedor.getId())) {
+            Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(fornecedor.getId());
+            fornecedorExistente.setNome(fornecedor.getNome());
+            fornecedorExistente.setCnpj(fornecedor.getCnpj());
+            fornecedorExistente.setEmail(fornecedor.getEmail());
+            fornecedorExistente.setTelefone(fornecedor.getTelefone());
+
+            fornecedorRepositorio.save(fornecedorExistente);
+
+            return new ResponseEntity<>(fornecedorExistente, HttpStatus.CREATED);
+        } else {
+            mensagem.setMensagem("Fornecedor nao encontrado!");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public ResponseEntity<?> deletarFornecedor(Long id) {
+        if (fornecedorRepositorio.existsById((id))) {
+            Fornecedor fornecedor = fornecedorRepositorio.findByFornecedorId(id);
+            fornecedorRepositorio.delete(fornecedor);
+            mensagem.setMensagem("Fornecedor deletado com sucesso");
+            return new ResponseEntity<>(mensagem, HttpStatus.OK);
+
+        } else {
+            mensagem.setMensagem("Fornecedor encontrado");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+
+        }
+
     }
     
-    if (fornecedor.getTelefone() == null) {
-      mensagem.setMensagem("Insira um Telefone");
-      return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-    }
-    
-    
+    public ResponseEntity<?> selecionarFornecedorId(long id) {
+        if(fornecedorRepositorio.existsById(id)) {
+            Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(id);
+            return new ResponseEntity<>(fornecedorExistente, HttpStatus.OK);
+        } else {
+            mensagem.setMensagem("Nnenhum fornecedor encontrado");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+        }
 
 
-    fornecedorRepositorio.save(fornecedor);
-    return new ResponseEntity<>(fornecedor, HttpStatus.CREATED);
+        
 
-  }
-  
-  public List<Fornecedor> listarfornecedor() {
-    return fornecedorRepositorio.findAll();
+}
 
-  }
- 
-  // public ResponseEntity<?> alterarFornecedor(Fornecedor fornecedor) {
-   //  if (fornecedor.getId() == null) {
-  //     mensagem.setMensagem("Id do Fornecedor não foi informado");
-  //   }
-  //   if (fornecedorRepositorio.existsById(fornecedor.getId())) {
-  //     Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(fornecedor.getId());
- //  }
-    
- //}
-
-
-  
 }

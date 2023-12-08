@@ -9,16 +9,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Fornecedor")
+@Table(name = "forncedores")
 @Getter
 @Setter
 public class Fornecedor {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  private String nome;
-  private String cnpj;
-  private Long telefone;
-  private String email;
-   
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nome;
+    private String cnpj;
+    private Long telefone;
+    private String email;
+
 }
