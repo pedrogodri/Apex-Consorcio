@@ -14,6 +14,7 @@ import br.com.consorcio.api.repositorio.ClienteRepositorio;
 @Service
 public class ClienteServico {
     
+    @Autowired
     private Mensagem mensagem;
 
     @Autowired
