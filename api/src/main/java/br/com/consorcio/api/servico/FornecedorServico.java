@@ -1,6 +1,7 @@
 package br.com.consorcio.api.servico;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,5 +53,33 @@ public class FornecedorServico {
         }
     }
 
+    public ResponseEntity<?> deletarFornecedor(Long id) {
+        if (fornecedorRepositorio.existsById((id))) {
+            Fornecedor fornecedor = fornecedorRepositorio.findByFornecedorId(id);
+            fornecedorRepositorio.delete(fornecedor);
+            mensagem.setMensagem("Fornecedor deletado com sucesso");
+            return new ResponseEntity<>(mensagem, HttpStatus.OK);
+
+        } else {
+            mensagem.setMensagem("Fornecedor encontrado");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+
+        }
+
+    }
     
+    public ResponseEntity<?> selecionarFornecedorId(long id) {
+        if(fornecedorRepositorio.existsById(id)) {
+            Fornecedor fornecedorExistente = fornecedorRepositorio.findByFornecedorId(id);
+            return new ResponseEntity<>(fornecedorExistente, HttpStatus.OK);
+        } else {
+            mensagem.setMensagem("Nnenhum fornecedor encontrado");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+        }
+
+
+        
+
+}
+
 }
