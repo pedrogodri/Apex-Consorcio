@@ -37,12 +37,12 @@ public class VeiculoServico {
     return veiculoRepositorio.findAll();
   }
 
- /*  public ResponseEntity<?> alterarVeiculo(Veiculo veiculo) {
-    if (veiculo.getId() == null ) {
+  public ResponseEntity<?> alterarVeiculo(Veiculo veiculo) {
+    if (veiculo.getId() == null) {
       mensagem.setMensagem("ID do veículo não foi informado");
       return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
     }
-    if(veiculoRepositorio.existsById(veiculo.getId())) {
+    if (veiculoRepositorio.existsById(veiculo.getId())) {
       Veiculo veiculoExistente = veiculoRepositorio.findByVeiculoId(veiculo.getId());
       veiculoExistente.setAno(veiculo.getAno());
       // Atualize as outras propriedades conforme necessário...
@@ -53,31 +53,31 @@ public class VeiculoServico {
       mensagem.setMensagem("Veículo não encontrado!");
       return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
     }
-  } */
-
-   public static ResponseEntity<?> deletarVeiculo(Long id) {
-    if(veiculoRepositorio.existsById(id)) {
- Veiculo veiculo =  veiculoRepositorio.findByVeiculoId(id);
- mensagem.setMensagem("veiculo Deletado com sucesso");
- veiculoRepositorio.delete(veiculo);
- return new ResponseEntity<>(mensagem, HttpStatus.OK);
-
-   } else {
-    mensagem.setMensagem("Nnenhum Veiculo encontrado");
-    return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
-              }   
-         
-        }
-
-        public ResponseEntity<?> listarVeiculo(Long id) {
-          if(veiculoRepositorio.existsById(id)) {
-            Veiculo veiculoExistente = veiculoRepositorio.findByVeiculoId(id);
-            return new ResponseEntity<>(veiculoExistente, HttpStatus.OK);
-          } else {
-            mensagem.setMensagem("Nenhum veiculo encontrado");
-            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);          
-
-          }
-        }
-  
   }
+
+  public ResponseEntity<?> deletarVeiculo(Long id) {
+    if (veiculoRepositorio.existsById(id)) {
+      Veiculo veiculo = veiculoRepositorio.findByVeiculoId(id);
+      mensagem.setMensagem("veiculo Deletado com sucesso");
+      veiculoRepositorio.delete(veiculo);
+      return new ResponseEntity<>(mensagem, HttpStatus.OK);
+
+    } else {
+      mensagem.setMensagem("Nnenhum Veiculo encontrado");
+      return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+    }
+
+  }
+
+  public ResponseEntity<?> selecionarVeiculoId(Long id) {
+    if (veiculoRepositorio.existsById(id)) {
+      Veiculo veiculoExistente = veiculoRepositorio.findByVeiculoId(id);
+      return new ResponseEntity<>(veiculoExistente, HttpStatus.OK);
+    } else {
+      mensagem.setMensagem("Nenhum veiculo encontrado");
+      return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+
+    }
+  }
+
+}
