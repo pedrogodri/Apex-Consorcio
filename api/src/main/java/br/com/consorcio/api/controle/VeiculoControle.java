@@ -42,7 +42,7 @@ public List<Veiculo> listarFornecedor() {
 
 @GetMapping("/{id}")
 public ResponseEntity<?> selecionarVeiculoId(@PathVariable Long id) {
-return VeiculoServico.selecionarVeiculoId(id);
+return veiculoServico.selecionarVeiculoId(id);
 }
 
 // ediatar
@@ -55,7 +55,7 @@ public ResponseEntity<?> alterarVeiculo(@RequestBody Veiculo veiculo) {
 
 @DeleteMapping("/{id}")
 public ResponseEntity<?> deletarVeiculo(@PathVariable Long id) {
-return VeiculoServico.deletarVeiculo(id);
+return veiculoServico.deletarVeiculo(id);
 }
 }
 
