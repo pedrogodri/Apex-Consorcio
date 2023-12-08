@@ -95,4 +95,26 @@ public class ClienteServico {
             return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
         }
     }
+
+    public ResponseEntity<?> deletarCliente(Long id){
+        if(clienteRepositorio.existsById(id)) {
+            Cliente cliente = clienteRepositorio.findById(id).get();
+            mensagem.setMensagem("Cliente Deletado com sucesso.");
+            clienteRepositorio.delete(cliente);
+            return new ResponseEntity<>(mensagem, HttpStatus.OK);
+        } else {
+            mensagem.setMensagem("Cliente encontrado");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public ResponseEntity<?> selecionarClienteId(Long id) {
+        if(clienteRepositorio.existsById(id)) {
+            Cliente clienteExistente = clienteRepositorio.findByClienteId(id);
+            return new ResponseEntity<>(clienteExistente, HttpStatus.OK);
+        } else {
+            mensagem.setMensagem("Nenhum cliente encontrado");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+        }
+    }
 }
