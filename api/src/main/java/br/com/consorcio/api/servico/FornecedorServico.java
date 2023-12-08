@@ -22,7 +22,25 @@ public class FornecedorServico {
 
     //cadastrar
     public ResponseEntity<?> cadastrarFornecedor(Fornecedor fornecedor) {
-        //sucesso
+        if (fornecedor.getNome().isEmpty() || fornecedor.getNome() == null) {
+            mensagem.setMensagem("Insira um nome.");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        }
+        if (fornecedor.getCnpj().isEmpty() || fornecedor.getCnpj() == null) {
+            mensagem.setMensagem("Insira um cnpj.");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        }
+
+        if (fornecedor.getTelefone() == null) {
+            mensagem.setMensagem("Insira um telefone.");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        }
+        if(fornecedor.getEmail().isEmpty() || fornecedor.getEmail() == null) {
+            mensagem.setMensagem("Insira um Email.");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        }
+            
+
         fornecedorRepositorio.save(fornecedor);
         return new ResponseEntity<>(fornecedor, HttpStatus.CREATED);
     }
