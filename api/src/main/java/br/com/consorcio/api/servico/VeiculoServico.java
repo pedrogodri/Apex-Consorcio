@@ -53,7 +53,36 @@ public class VeiculoServico {
       mensagem.setMensagem("Veículo não encontrado!");
       return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
     }
+
   }
+/* 
+   public static ResponseEntity<?> deletarVeiculo(Long id) {
+    if(VeiculoRepositorio.existsById(id)) {
+ Veiculo veiculo =  VeiculoRepositorio.findByVeiculoId(id);
+ mensagem.setMensagem("veiculo Deletado com sucesso");
+ veiculoRepositorio.delete(veiculo);
+ return new ResponseEntity<>(mensagem, HttpStatus.OK);
+
+   } else {
+    mensagem.setMensagem("Nnenhum Veiculo encontrado");
+    return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+              }   
+         
+        }
+
+        public ResponseEntity<?> listarVeiculo(Long id) {
+          if(veiculoRepositorio.existsById(id)) {
+            Veiculo veiculoExistente = veiculoRepositorio.findByVeiculoId(id);
+            return new ResponseEntity<>(veiculoExistente, HttpStatus.OK);
+          } else {
+            mensagem.setMensagem("Nenhum veiculo encontrado");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);          
+
+          }
+        }
+  
+
+  } */
 
   public ResponseEntity<?> deletarVeiculo(Long id) {
     if (veiculoRepositorio.existsById(id)) {
