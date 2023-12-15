@@ -9,12 +9,12 @@ export class FornecedorService {
 
   constructor(private http: HttpClient) { }
   private fornecedorId: number = 0;
-  private url = 'http://localhost;8080/fornecedor';
+  private url = 'http://localhost:8080/fornecedor';
   cadastrarFornecedor(fornecedor: Fornecedor): Observable<Fornecedor> {
-    return this.htpp.post<Fornecedor>(this.url, fornecedor);
+    return this.http.post<Fornecedor>(this.url, fornecedor);
   }
 
-  getFornecedor(): Observable<Fornecedor[]> {
+  getFornecedores(): Observable<Fornecedor[]> {
     return this.http.get<Fornecedor[]>(this.url) 
   }
   
@@ -31,11 +31,11 @@ export class FornecedorService {
 }
   
 
-  getFornecedorId(id: number) {
-    this.fornecedorId = id;
+setFornecedorId(id: number) {
+  this.fornecedorId = id;
 }
-  set FornecedorId() : number {
-    return this.exemploId;
+getFornecedorId() : number {
+  return this.fornecedorId;
 }
 
 }

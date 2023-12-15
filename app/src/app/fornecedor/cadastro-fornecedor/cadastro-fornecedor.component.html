@@ -1,0 +1,27 @@
+<div class="container w-50 my-5 bg-black">
+    <form class="p-4" #fornecedorForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nome</label>
+            <input type="text" class="form-control" name="nome" [(ngModel)]="fornecedor.nome" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="fornecedor.email" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Telefone</label>
+            <input type="number" class="form-control" name="telefone" [(ngModel)]="fornecedor.telefone" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Cnpj</label>
+            <input type="text" class="form-control" name="cnpj" [(ngModel)]="fornecedor.cnpj" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-primary" type="submit" *ngIf="!fornecedor.id">Cadastrar</button>
+            <button class="btn btn-warning" *ngIf="fornecedor.id">Atualizar</button>
+            <button class="btn btn-danger" (click)="voltarListagem()">Voltar</button>
+          </div>
+          {{ fornecedor | json }}
+    </form>
+</div>
+
