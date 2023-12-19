@@ -15,7 +15,6 @@ export class CadastroFornecedorComponent implements OnInit {
 
   constructor(private service: FornecedorService, private rota: Router) {}
 
-
   ngOnInit(): void {
     this.id = this.service.getFornecedorId();
     if(this.id) {
