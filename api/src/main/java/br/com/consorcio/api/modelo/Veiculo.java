@@ -1,6 +1,5 @@
 package br.com.consorcio.api.modelo;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +10,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import br.com.consorcio.api.modelo.Fornecedor;
+import br.com.consorcio.api.modelo.Cliente;
+
 
 @Getter
 @Setter
@@ -22,15 +23,14 @@ public class Veiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-   // private byte img;
     private String nome;
     private String cor;
     private Integer ano;
     private Double kmRodado;
-    //private Fornecedor fornecedor;
     private Double preco;
-    // @ManyToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "id_cliente")
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
     private String descricao;
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
